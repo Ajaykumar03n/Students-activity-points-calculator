@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Page 2</title>
+    <style>
+        h2, h3 { text-align: center; }
+
+        body {
+            background-image: url("https://img.freepik.com/premium-vector/seamless-pattern-with-different-school-objects_165488-4326.jpg?w=996");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #sam {
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        form {
+            background-color: #FFFAF0;
+            padding: 20px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10%;
+            margin-right: 30px;
+            margin-left: 70px;
+        }
+
+        .profile-details {
+            text-align: left;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        button {
+            background-color: #675da3;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 250px;
+            height: 50px;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #554c86;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="{{ url_for('dashboard1') }}" enctype="multipart/form-data">
+        <h2>KONGU ENGINEERING COLLEGE</h2>
+        <h3>STUDENT ACTIVITY POINTS UPLOAD FORM</h3>
+        <div class="profile-container">
+            <img src="data:image/jpeg;base64,{{ user.image_data }}" alt="{{ user.username }}" class="profile-img">
+            <div class="profile-details">
+                <strong>NAME:</strong> {{ user['username'] }} <br><br>
+                <strong>REGISTER NO:</strong> {{ user['reg_no'] }} <br><br>
+                <strong>DEPARTMENT:</strong> {{ user['dept'] }} <br>
+            </div>
+        </div>
+        <a href="{{ url_for('paper') }}"><button type="button"><i class="fa fa-file-text-o"></i> Paper Presentation</button></a>
+        <a href="{{ url_for('project') }}"><button type="button"><i class="fa fa-folder-open-o"></i> Project Presentation</button></a>
+        <a href="{{ url_for('techno') }}"><button type="button"><i class="fa fa-cogs"></i> Techno Managerial Events</button></a>
+        <a href="{{ url_for('games') }}"><button type="button"><i class="fa fa-futbol-o"></i> Sports and Games</button></a>
+        <a href="{{ url_for('member') }}"><button type="button"><i class="fa fa-users"></i> Membership</button></a>
+        <a href="{{ url_for('leader') }}"><button type="button"><i class="fa fa-handshake-o"></i> Leadership and Organizing Events</button></a>
+        <a href="{{ url_for('online') }}"><button type="button"><i class="fa fa-graduation-cap"></i> Online Courses</button></a>
+        <a href="{{ url_for('ppp') }}"><button type="button"><i class="fa fa-file-text"></i> Project, Paper, Patent Copyright</button></a>
+        <a href="{{ url_for('gate') }}"><button type="button"><i class="fa fa-bar-chart"></i> GATE/CAT/Govt Exams</button></a>
+        <a href="{{ url_for('ipt') }}"><button type="button"><i class="fa fa-briefcase"></i> Placement and Internship</button></a>
+        <a href="{{ url_for('enterp') }}"><button type="button"><i class="fa fa-lightbulb-o"></i> Entrepreneurship</button></a>
+        <a href="{{ url_for('social') }}"><button type="button"><i class="fa fa-heart"></i> Social Activities</button></a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        body {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: #fffaf0;
+            margin: 0px;
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 90vh; /* Full viewport height */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            width: 100%;
+            padding: 45px;
+            border-radius: 20px;
+            background-color: #61579a;
+            color: #ffffff;
+        }
+
+        #form-image {
+            width: 85%; /* Adjust image width */
+            max-width: 500px; /* Maximum image width */
+            height: 440px;
+            border-radius: 20px; /* Optional: Add border radius */
+            margin-right: auto; /* Add space between image and form */
+            margin-left: auto;
+        }
+        img{
+            width: 50px;
+        height: 50px;       }
+
+        form {
+            flex: 1; /* Take remaining space */
+            max-width: 400px; /* Adjust form max-width */
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 20px;
+        }
+
+        input {
+            border: 2px solid #EFEBE9;
+            border-radius: 25px;
+            background: #EDE7F6;
+            padding: 15px;
+            min-width: 60%;
+            width: 100%; /* Full width */
+            max-width: 300px; /* Max width for input */
+            margin-bottom: 20px; /* Space between inputs */
+            margin-right:auto ;
+            margin-left: auto;
+        }
+
+        button {
+            background-color: #B388FF;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 50%;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        label{
+            margin-right: auto;
+            margin-left: 30px;
+
+        }
+        button:hover {
+            background-color: #EBDEF0;
+            color: #61579a;
+        }
+
+        @media only screen and (max-width: 700px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    #form-image {
+        width: 90%; /* Adjust image width for smaller screens */
+        max-width: none; /* No maximum width for smaller screens */
+        margin-bottom: 0px; /* Add space between image and form */
+        margin-top: 5px;
+        height: 170px;
+    }
+
+    form {
+        max-width: 100%; /* Adjust form max-width for smaller screens */
+        margin-right:  auto; /* Center the form horizontally */
+        padding: 20px;
+
+    }
+
+    input {
+        /* Adjust input margin for smaller screens */
+        margin-bottom: 10px;
+        width: 80%;
+    }
+}
+        @media only screen and (min-width: 701px) and (max-width: 1024px) {
+    .container {
+        flex-direction: row; /* Reset flex-direction for tablets */
+        justify-content: center; /* Center items horizontally */
+    }
+
+    #form-image {
+        width: 70%; /* Adjust image width for tablets */
+        height: 280px; /* Allow image height to adjust proportionally */
+        margin-bottom: 0; /* Reset margin for image */
+    }
+
+    form {
+        max-width: 80%; /* Adjust form max-width for tablets */
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="form-image" src="https://png.pngtree.com/thumb_back/fh260/background/20200703/pngtree-mathematics-education-calculator-ruler-hand-drawn-background-image_340649.jpg" alt="Image">
+        <form method="POST" action="{{ url_for('login') }}">
+            <img src="{{ url_for('static', filename='kec.png') }}" alt="Favicon">
+            <h2>KONGU ENGINEERING COLLEGE</h2><br>
+            <label for="username" class="nam"><strong>USERNAME:</strong></label><br>
+            <input type="text" name="username" placeholder="Username" class="sam" id="username" required><br>
+            <label for="reg_no" class="nam"><strong>PASSWORD:</strong></label><br>
+            <input type="text" name="reg_no" placeholder="Register Number" class="sam" id="reg_no" required><br>
+            <button type="submit"><b>LOGIN</b></button>
+        </form>        
+    </div>
+</body>
+</html>

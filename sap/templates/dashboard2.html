@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Dashboard 2</title>
+    <style>
+        h2, h3 { text-align: center; }
+
+        body {
+            background-image: url("https://img.freepik.com/premium-vector/seamless-pattern-with-different-school-objects_165488-4326.jpg?w=996");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #sam {
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        form {
+            background-color: #FFFAF0;
+            padding: 20px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+    
+
+        .profile-details {
+            text-align: left;
+            margin-left: 0;
+            margin-right: auto;
+        }
+        button {
+            background-color: #61579a;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 30%;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        label{
+            margin-right: auto;
+            margin-left: 30px;
+
+        }
+        button:hover {
+            background-color: #EBDEF0;
+            color: #a79fd3;
+        }
+        /* CSS for styling the label */
+        label {
+            margin-right: auto;
+            margin-left: 30px; /* Adjust left margin as needed */
+            display: inline-block;
+            font-weight: bold; /* Optionally make the label text bold */
+        }
+
+/* CSS for styling the input field */
+        input[type="text"] {
+            padding: 10px; /* Adjust padding as needed */
+            border: 2px solid #ccc; /* Border color */
+            border-radius: 5px; /* Border radius */
+            width: 40%; /* Adjust input width as needed */
+            box-sizing: border-box; /* Include padding and border in the total width */
+            font-size: 16px; /* Adjust font size as needed */
+        }
+
+/* CSS for adding spacing between the label and input field */
+        br + label {
+            margin-top: 10px; /* Adjust top margin as needed */
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <form method="POST" action="{{ url_for('fac_verify') }}" enctype="multipart/form-data">
+        <h2>KONGU ENGINEERING COLLEGE</h2>
+        <h3>STUDENT ACTIVITY POINTS UPLOAD FORM</h3>
+        <div class="profile-container">
+            <div class="profile-details">
+                <strong>NAME:</strong> {{ user['username'] }} <br><br>
+                <strong>SAP POINT ADVISOR CLASS:</strong> {{ user['class'] }} <br><br>
+                <strong>DEPARTMENT:</strong> {{ user['dept'] }} <br>
+            </div>
+        </div>
+        <h3>Enter the roll number of student</h3>
+        <label for="problem_description"></label>
+        <input type="text" id="problem_description" name="reg_no" placeholder="Enter roll number">
+        <br><br>
+        <div><button type="submit"><b>SUBMIT</b></button></div>
+        
+    </form>
+</body>
+</html>

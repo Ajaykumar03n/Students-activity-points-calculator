@@ -1,0 +1,544 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>fac_verify</title>
+    <script src="{{ url_for('static', filename='fac.js') }}"></script>
+    <style>
+        h2, h3 { text-align: center; }
+
+        body {
+            background-image: url("https://img.freepik.com/premium-vector/seamless-pattern-with-different-school-objects_165488-4326.jpg?w=996");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #sam {
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        form {
+            background-color: #FFFAF0;
+            padding: 20px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 1900px;
+            margin: auto;
+            text-align: center;
+            height: auto;
+        }
+        li{
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+        .profile-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            margin-top: 15px;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        th, td {
+            padding: 6px;
+            text-align: center;
+            border-bottom: 1px solid #61579a;
+        }
+        th {
+            background-color: #61579a;
+            color: white;
+
+        }
+   
+
+        .profile-details {
+            text-align: left;
+            margin-left: 0;
+            margin-right: auto;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10%;
+            margin-right: 30px;
+            margin-left: 70px;
+        }
+        button {
+            background-color: #61579a;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 30%;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        label{
+            margin-right: auto;
+            margin-left: 30px;
+
+        }
+        button:hover {
+            background-color: #EBDEF0;
+            color: #a79fd3;
+        }
+        /* CSS for styling the label */
+        label {
+            margin-right: auto;
+            margin-left: 30px; /* Adjust left margin as needed */
+            display: inline-block;
+            font-weight: bold; /* Optionally make the label text bold */
+        }
+
+/* CSS for styling the input field */
+        input[type="text"] {
+            padding: 10px; /* Adjust padding as needed */
+            border: 2px solid #ccc; /* Border color */
+            border-radius: 5px; /* Border radius */
+            width: 50%; /* Adjust input width as needed */
+            box-sizing: border-box; /* Include padding and border in the total width */
+            font-size: 16px; /* Adjust font size as needed */
+        }
+
+/* CSS for adding spacing between the label and input field */
+        br + label {
+            margin-top: 10px; /* Adjust top margin as needed */
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <form method="POST" action="{{ url_for('process_data') }}" enctype="multipart/form-data">
+        <h2>KONGU ENGINEERING COLLEGE</h2>
+        <h3>STUDENT ACTIVITY POINTS DASHBOARD</h3>
+        <div class="profile-container">
+            <img src="data:image/jpeg;base64,{{ user.image_data }}" alt="{{ user.username }}" class="profile-img">
+            <div class="profile-details">
+                <strong>NAME:</strong> {{ user['username'] }} <br><br>
+                <strong>ROLL NO:</strong> {{ user['reg_no'] }} <br><br>    
+                <strong>DEPARTMENT:</strong> {{ user['dept'] }} <br><br>
+                <input type="hidden" name="reg_n" value="{{ user['reg_no'] }}">
+                <button type="submit">Submit</button></a>
+            </div>
+        </div><br>
+            <div class="profile-details">
+                <ol>
+                    <li><h4>PAPER PRESENTATION:</h4>
+                        <table id="table1">
+                            <thead>
+                                <tr>
+                                    <th>College</th>
+                                    <th>event</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Prize</th>
+                                    <th>price money</th>
+                                    <th>Proof</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for paper in papers %}
+                                <tr>
+                                    <td>{{ paper['name_clg'] }}</td>
+                                    <td>{{ paper['event'] }}</td>
+                                    <td>{{ paper['date'] }}</td>
+                                    <td>{{ paper['loc'] }}</td>
+                                    <td>{{ paper['prize'] }}</td>
+                                    <td>{{ paper['price'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + paper['proof']) }}" target="_blank">Proof</a></td>
+                                    <td><input type="checkbox" name="checkbox_1" value="{{paper['date']}}|{{paper['prize']}}"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><h4>Project Presentation :</h4>
+                        <table id="table2">
+                            <thead>
+                                <tr>
+                                    <th>College</th>
+                                    <th>event</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Prize</th>
+                                    <th>price money</th>
+                                    <th>Proof</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for paper in projects %}
+                                <tr>
+                                    <td>{{ paper['name_clg'] }}</td>
+                                    <td>{{ paper['event'] }}</td>
+                                    <td>{{ paper['date'] }}</td>
+                                    <td>{{ paper['loc'] }}</td>
+                                    <td>{{ paper['prize'] }}</td>
+                                    <td>{{ paper['price'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + paper['proof']) }}" target="_blank">Proof</a></td>
+                                    <td><input type="checkbox" name="checkbox_2" value="{{paper['date']}}|{{paper['prize']}}" >
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><h4>Techno Managerial Events :</h4>
+                        <table id="table3">
+                            <thead>
+                                <tr>
+                                    <th>College</th>
+                                    <th>event</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Prize</th>
+                                    <th>price money</th>
+                                    <th>Proof</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for paper in technos %}
+                                <tr>
+                                    <td>{{ paper['name_clg'] }}</td>
+                                    <td>{{ paper['event'] }}</td>
+                                    <td>{{ paper['date'] }}</td>
+                                    <td>{{ paper['loc'] }}</td>
+                                    <td>{{ paper['prize'] }}</td>
+                                    <td>{{ paper['price'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + paper['proof']) }}" target="_blank">Proof</a></td>
+                                    <td><input type="checkbox" name="checkbox_3" value="{{paper['date']}}|{{paper['prize']}}" >
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><h4>Sports & Games:</h4>
+                        <table id="table4">
+                            <thead>
+                                <tr>
+                                    <th>College</th>
+                                    <th>event</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Activity</th>
+                                    <th>Prize</th>
+                                    <th>Proof</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for paper in gamess %}
+                                <tr>
+                                    <td>{{ paper['name_clg'] }}</td>
+                                    <td>{{ paper['event'] }}</td>
+                                    <td>{{ paper['date'] }}</td>
+                                    <td>{{ paper['loc'] }}</td>
+                                    <td>{{ paper['act'] }}</td>
+                                    <td>{{ paper['prize'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + paper['proof']) }}" target="_blank">Proof</a></td>
+                                    <td><input type="checkbox" name="checkbox_4" value="{{paper['date']}}|{{paper['prize']}}" >
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><h4>MEMBERSHIPS:</h4>
+                        <table id="table5">
+                            <thead>
+                                <tr>
+                                    <th>Member</th>
+                                    <th>Proof NCC</th>
+                                    <th>Proof Professional Society</th>
+                                    <th>Proof Clubs</th>
+                                    <th>PRP</th>
+                                    <th>PR</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for member in members %}
+                                <tr>
+                                    <td>{{ member['member'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_n']) }}" target="_blank">Proof</a></td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_p']) }}" target="_blank">Proof</a></td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_c']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['prp'] }}</td>
+                                    <td>{{ member['pr'] }}</td>
+                                    <td><input type="checkbox" name="checkbox_5" value="{{ member['member'] }}" >
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><h4>Leadership/Organizing Events :</h4>
+                        <table id="table6">
+                            <thead>
+                                <tr>
+                                    <th>high_position</th>
+                                    <th>high_position count</th>
+                                    <th>Proof high_position</th>
+                                    <th>2nd_high_position</th>
+                                    <th>count 2nd_high_position</th>
+                                    <th>Proof 2nd_high_position</th>
+                                    <th>Executive Member</th>
+                                    <th>Executive Member count</th>
+                                    <th>Proof Executive Member</th>
+                                    <th>coordinators</th>
+                                    <th>coordinators count</th>
+                                    <th>Proof coordinators</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for member in leaders %}
+                                <tr>
+                                    <td>{{ member['bd'] }}</td>
+                                    <td>{{ member['b_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['p_c']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['camp1'] }}</td>
+                                    <td>{{ member['camp1_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_camp1']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['camp2'] }}</td>
+                                    <td>{{ member['camp2_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_camp2']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['camp3'] }}</td>
+                                    <td>{{ member['camp3_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_camp3']) }}" target="_blank">Proof</a></td>                                    
+                                    <td><input type="checkbox" name="checkbox_6" value="{{ member['bd'] }}|{{member['camp1']}}|{{member['camp2']}}|{{member['camp3']}}" >
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><h4>Online Courses :</h4>
+                        <table id="table7">
+                            <thead>
+                                <tr>
+                                    <th>high_position</th>
+                                    <th>Non-Credit</th>
+                                    <th>Proof</th>
+                                    <th>one credit</th>
+                                    <th>one_credit</th>
+                                    <th>Proof one_credit</th>
+                                    <th>two credit</th>
+                                    <th>two_credit count</th>
+                                    <th>Proof two_creditr</th>
+                                    <th>Three or More Credits</th>
+                                    <th>Three or More Credits count</th>
+                                    <th>Proof Three or More Credits</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for member in onlines %}
+                                <tr>
+                                    <td>{{ member['bd'] }}</td>
+                                    <td>{{ member['b_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['p_c']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['camp1'] }}</td>
+                                    <td>{{ member['camp1_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_camp1']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['camp2'] }}</td>
+                                    <td>{{ member['camp2_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_camp2']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['camp3'] }}</td>
+                                    <td>{{ member['camp3_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_camp3']) }}" target="_blank">Proof</a></td>                                    
+                                    <td><input type="checkbox" name="checkbox_7" value="{{ member['bd'] }}|{{member['camp1']}}|{{member['camp2']}}|{{member['camp3']}}" >
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+
+                    <li><h4>Project to Paper/Patent/Copyright:</h4>
+                        <table id="table8">
+                            <thead>
+                                <tr>
+                                    <th>College</th>
+                                    <th>event</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Activity</th>
+                                    <th>Prize</th>
+                                    <th>Proof</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for paper in ppps %}
+                                <tr>
+                                    <td>{{ paper['name_clg'] }}</td>
+                                    <td>{{ paper['event'] }}</td>
+                                    <td>{{ paper['date'] }}</td>
+                                    <td>{{ paper['loc'] }}</td>
+                                    <td>{{ paper['act'] }}</td>
+                                    <td>{{ paper['prize'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + paper['proof']) }}" target="_blank">Proof</a></td>
+                                    <td><input type="checkbox" name="checkbox_8" value="{{paper['date']}}|{{paper['prize']}}" >
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><h4>GATE/CAT/Govt Exams :</h4>
+                        <table id="table9">
+                            <thead>
+                                <tr>
+                                    <th>appeared</th>
+                                    <th>appeared count</th>
+                                    <th>Proof appeared</th>
+                                    <th>Qualified</th>
+                                    <th>count Qualified</th>
+                                    <th>Proof Qualified</th>
+                                    <th>status</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for member in gates %}
+                                <tr>
+                                    <td>{{ member['bd'] }}</td>
+                                    <td>{{ member['b_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['p_c']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['camp1'] }}</td>
+                                    <td>{{ member['camp1_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_camp1']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['camp2'] }}</td>
+                                    <td><input type="checkbox" name="checkbox_9" value="{{ member['bd'] }}|{{member['camp1']}}|{{member['camp2']}}" >
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><h4>PLACEMENT AND INTERNSHIP :</h4>
+                        <table id="table10">
+                            <thead>
+                                <tr>
+                                    <th>Written Test cleared</th>
+                                    <th>count</th>
+                                    <th>Proof</th>
+                                    <th>status</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for member in ipts %}
+                                <tr>
+                                    <td>{{ member['written'] }}</td>
+                                    <td>{{ member['written_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['place'] }}</td>
+                                    <td><input type="checkbox" name="checkbox_10" value="{{member['written']}}|{{member['place']}}"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    
+                    <li><h4>ENTERPRENEURSHIP :</h4>
+                        <table id="table11">
+                            <thead>
+                                <tr>
+                                    <th>workshop_attended</th>
+                                    <th>count_workshops</th>
+                                    <th>Proof_workshops</th>
+                                    <th>startpus</th>
+                                    <th>count_startups</th>
+                                    <th>Proof_startups</th>
+                                    <th>relaese_products</th>
+                                    <th>count_products</th>
+                                    <th>Proof</th>
+                                    <th>price Money</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for member in enterps %}
+                                <tr>
+                                    <td>{{ member['works'] }}</td>
+                                    <td>{{ member['works_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_w']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['release'] }}</td>
+                                    <td>{{ member['release_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_r']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['startup'] }}</td>
+                                    <td>{{ member['stratup_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_s']) }}" target="_blank">Proof</a></td>                                    
+                                    <td>{{ member['proce']}}</td>
+                                    <td><input type="checkbox" name="checkbox_11" value="{{ member['works'] }}|{{member['startpu']}}|{{member['release']}}" >
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><h4>Social Activities :</h4>
+                        <table id="table12">
+                            <thead>
+                                <tr>
+                                    <th>Community Services</th>
+                                    <th>Services count</th>
+                                    <th>Proof services</th>
+                                    <th>NSS/NCC Camp(1 to 2 weeks)</th>
+                                    <th>count camp</th>
+                                    <th>Proof</th>
+                                    <th>NSS/NCC Camp(more than 2 weeks)</th>
+                                    <th>count</th>
+                                    <th>Proof</th>
+                                    <th>Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for member in socials %}
+                                <tr>
+                                    <td>{{ member['bd'] }}</td>
+                                    <td>{{ member['b_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['p_c']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['camp1'] }}</td>
+                                    <td>{{ member['camp1_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_camp1']) }}" target="_blank">Proof</a></td>
+                                    <td>{{ member['camp2'] }}</td>
+                                    <td>{{ member['camp2_c'] }}</td>
+                                    <td><a href="{{ url_for('static', filename='images/' + member['proof_camp2']) }}" target="_blank">Proof</a></td>                                    
+                                    <td><input type="checkbox" name="checkbox_12" value="{{ member['bd'] }}|{{member['camp1']}}|{{member['camp2']}}" >
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                </ol>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
