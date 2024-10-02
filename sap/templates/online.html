@@ -10,9 +10,8 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            font-family: Arial, sans-serif;
-            margin-left: auto;
-            margin-right: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,145 +19,160 @@
             padding: 10px;
         }
 
-        div {          
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .container {
             max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: rgb(151, 56, 210);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: rgb(51, 51, 51);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="file"],
+        input[type="number"],
+        input[type="submit"] {
             width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        input[type="file"]:focus,
+        input[type="number"]:focus {
+            background-color: #eef6ff;
+            border-color: rgb(151, 56, 210);
+            outline: none;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .radio-group label {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
             text-align: left;
         }
 
-        .container {
-            display: block;
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 1px;
-            cursor: pointer;
-            font-size: 20px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }  
-
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
-            border-radius: 4px;
-        }
-
-        .container:hover input ~ .checkmark {
-            background-color: #ccc;
-        }
-
-        .container input:checked ~ .checkmark {
-            background-color: rgb(151, 56, 210);
-        }  
-
-        .checkmark:after {
-            content: "";
-            position: absolute;
+        .radio-group input[type="radio"] {
             display: none;
         }
 
-        .container input:checked ~ .checkmark:after {
-            display: block;
-        }
-
-        .container .checkmark:after {
-            top: 7px;
-            left: 9px;
-            width: 6px;
-            height: 12px;
-            border: solid #fff;
-            border-width: 0 3px 3px 0;
-            transform: rotate(45deg);
-        }
-        #liveFeedSettingSideBar {
-    width: 1px; /* Set the desired width */
-    height: 1px; /* Set the desired height */
-    background-color: transparent;
-}
-        input[type=text], select {
-            width: 100%;
-            padding: 20px 120px 30px 5px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        input[type=SUBMIT] {
-            width: 100%;
-            background-color: #61579a;      
+        .radio-group input[type="radio"]:checked + label {
+            background-color: rgb(151, 56, 210);
             color: white;
-            padding: 12px 10px;
-            margin: 8px 0;
+            border-color: rgb(151, 56, 210);
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: rgb(151, 56, 210);
+            color: white;
+            padding: 15px;
             border: none;
-            border-radius: 4px;
+            border-radius: 25px;
+            font-size: 18px;
             cursor: pointer;
-            border-radius: 50px;
+            transition: background-color 0.3s ease;
         }
 
         input[type=submit]:hover {
-            background-color: #ab84ed;
+            background-color: rgb(120, 40, 170);
+        }
+
+        .note {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #f70c0c;
+            text-align: center;
+        }
+        .custom-file-upload {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            display: inline-block;
+            padding: 12px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #eef6ff;
+            border-color: rgb(151, 56, 210);
+        }
+
+        .file-input {
+            display: none;
+        }
+        
+        .file-upload-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .file-upload-container input[type="file"] + label {
+            width: 100%;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-<div>
-    <h2 align="center">Online Courses</h2>
+<div class="container">
+    <h2>Online Courses</h2>
     <form method="POST" action="{{ url_for('online') }}" enctype="multipart/form-data">
         <h3>VAC/Online Course</h3>
-        <label class="container">Value Added Course(Non-Credit)
-            <input type="checkbox" name="vac" value="placeholder">
-            <span class="checkmark"></span>
-        </label><br>
-        Number Of Courses:<input type="number" id="vac" name="vac1" placeholder="Enter number of courses"><br><br>
-        <label for="myfile">ADD FILE:</label>
-        <input type="file" id="myfile" name="myfile1"><br><br>
-<h3>NPTEL and Credit Courses</h3>
-        <label class="container">One Credit
-            <input type="checkbox" name="one_credit" value="placeholder">
-            <span class="checkmark"></span>
-        </label><br>
-        Number of Courses:<input type="number" id="one credit" name="one_credit1" placeholder="Enter number of courses"><br><br>
-        <label for="myfile">ADD FILE:</label>
-        <input type="file" id="myfile" name="myfile2"><br><br>
+        <div class="radio-group">
+            <input type="radio" name="course_type" value="Value Added Course (Non-Credit)" id="vac">
+            <label for="vac">Value Added Course (Non-Credit)</label>
 
-        <label class="container">Two Credit
-        <input type="checkbox" name="two_credit" value="placeholder" >
-            <span class="checkmark"></span>
-        </label><br>
-Number of Courses:<input type="number" id="two credit" name="two_credit2" placeholder="Enter number of courses"><br><br>
-        <label for="myfile">ADD FILE:</label>
-        <input type="file" id="myfile" name="myfile3"><br><br>
+            <input type="radio" name="course_type" value="NPTEL One Credit" id="nptel_one">
+            <label for="nptel_one">NPTEL and Credit Courses (One Credit)</label>
 
-   
-       
-<label class="container">Three or More Credits
-        <input type="checkbox" name="three_credits" value="placeholder">
-            <span class="checkmark"></span>
-        </label><br>
-Number of Courses:<input type="number" id="three credits" name="three_credits3"><br><br>
-        <label for="myfile">ADD FILE:</label>
-        <input type="file" id="myfile" name="myfile4"><br><br>
-         <input type="submit">
+            <input type="radio" name="course_type" value="NPTEL Two Credit" id="nptel_two">
+            <label for="nptel_two">NPTEL and Credit Courses (Two Credit)</label>
+
+            <input type="radio" name="course_type" value="NPTEL Three or More Credits" id="nptel_three">
+            <label for="nptel_three">NPTEL and Credit Courses (Three or More Credits)</label>
+        </div>
+        <label for="proof">Upload Proof:</label>
+        <div class="file-upload-container">
+            <input type="file" id="proof" name="proof" class="file-input">
+            <label for="proof" class="custom-file-upload">Choose File</label>
+        </div>
+
+        <div class="note">Note: If you have more than one course, please fill out the form again.</div>
+
+        <input type="submit" value="Submit">
     </form>
 </div>
 

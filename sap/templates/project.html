@@ -5,488 +5,365 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Presentation</title>
     <style>
-       body {
-            background-image: url("https://img.freepik.com/premium-vector/seamless-pattern-with-different-school-objects_165488-4326.jpg?w=996"); /* Specify your image URL */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+      * {
+          box-sizing: border-box;
+      }
 
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-image: url("https://img.freepik.com/premium-vector/seamless-pattern-with-different-school-objects_165488-4326.jpg?w=996");
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+      }
 
-        div
-        {          
-            background-color:rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            width: 100%;
-            text-align: left;
-        }
-        .container {
-            display: block;
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 1px;
-            cursor: pointer;
-            font-size: 20px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+      .container {
+          max-width: 600px;
+          background-color: rgba(255, 255, 255, 0.8);
+          padding: 30px;
+          border-radius: 25px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          margin: 20px;
+          transition: all 0.3s ease;
+      }
 
-/* Hide the browser's default radio button */
-        .container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }  
+      .container:hover {
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
 
-/* Create a custom radio button */
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
-            border-radius: 50%;
-        }
+      h2 {
+          text-align: center;
+          color: rgb(151, 56, 210);
+          margin-bottom: 20px;
+      }
 
-/* On mouse-over, add a grey background color */
-        .container:hover input ~ .checkmark {
-            background-color: #ccc;
-        }
+      label {
+          display: block;
+          margin-bottom: 8px;
+          font-size: 16px;
+          color: #333;
+      }
 
-/* When the radio button is checked, add a blue background */
-        .container input:checked ~ .checkmark {
-            background-color: rgb(151, 56, 210);
-        }  
+      input[type="text"],
+      input[type="date"],
+      input[type="file"],
+      select {
+          width: 100%;
+          padding: 12px;
+          margin-bottom: 15px;
+          border: 1px solid #ddd;
+          border-radius: 20px;
+          background-color: #f9f9f9;
+          font-size: 16px;
+          transition: background-color 0.3s ease, border-color 0.3s ease;
+      }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
+      input[type="text"]:focus,
+      input[type="date"]:focus,
+      input[type="file"]:focus,
+      select:focus {
+          background-color: #eef6ff;
+          border-color: rgb(151, 56, 210);
+          outline: none;
+      }
 
-/* Show the indicator (dot/circle) when checked */
-        .container input:checked ~ .checkmark:after {
-  display: block;
-        }
+      .radio-group {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+          gap: 10px;
+      }
 
-/* Style the indicator (dot/circle) */
-        .container .checkmark:after {
-            top: 9px;
-            left: 9px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: white;
-        }
- 
-        input[type=text], select {
-            width: 100%;
-            padding: 20px 120px 30px 5px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        #liveFeedSettingSideBar {
-            width: 1px; /* Set the desired width */
-            height: 1px; /* Set the desired height */
-            background-color: transparent;
-        }
-      ::placeholder {
-            color: #666; /* Placeholder text color */
-        }
+      .radio-group label {
+          flex: 1;
+          text-align: center;
+          padding: 10px;
+          background-color: #f9f9f9;
+          border: 1px solid #ddd;
+          border-radius: 15px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
 
-        input[type=SUBMIT] {
-            width: 100%;
-            background-color: #61579a;      
-            color: white;
-            padding: 12px 10px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            border-radius: 50px;
-        }
+      .radio-group input[type="radio"] {
+          display: none;
+      }
 
-        input[type=submit]:hover {
-            background-color: #ab84ed;
-           
-        }
-        /* Custom select dropdown styling */
-        .custom-select {
-            position: relative;
-            font-family: Arial;
-          }
-         
-          .custom-select select {
-            display: none; /*hide original SELECT element:*/
-          }
-         
-          .select-selected {
-            background-color: DodgerBlue;
-          }
-         
-          /*style the arrow inside the select element:*/
-          .select-selected:after {
-            position: absolute;
-            content: "";
-            top: 14px;
-            right: 10px;
-            width: 0;
-            height: 0;
-            border: 6px solid transparent;
-            border-color: #fff transparent transparent transparent;
-          }
-         
-          /*point the arrow upwards when the select box is open (active):*/
-          .select-selected.select-arrow-active:after {
-            border-color: transparent transparent #fff transparent;
-            top: 7px;
-          }
-         
-          /*style the items (options), including the selected item:*/
-          .select-items div,.select-selected {
-            color: #ffffff;
-            padding: 8px 16px;
-            border: 1px solid transparent;
-            border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-            cursor: pointer;
-            user-select: none;
-          }
-         
-          /*style items (options):*/
-          .select-items {
-            position: absolute;
-            background-color: DodgerBlue;
-            top: 100%;
-            left: 0;
-            right: 0;
-            z-index: 99;
-          }
-         
-          /*hide the items when the select box is closed:*/
-          .select-hide {
-            display: none;
-          }
-         
-          .select-items div:hover, .same-as-selected {
-            background-color: rgba(0, 0, 0, 0.1);
-          }
+      .radio-group input[type="radio"]:checked + label {
+          background-color: rgb(151, 56, 210);
+          color: white;
+          border-color: rgb(151, 56, 210);
+      }
 
-      /* Custom select dropdown styling */
-.custom-select {
-  position: relative;
-  font-family: Arial;
-  margin-bottom: 20px; /* Add some spacing */
-}
+      input[type="submit"] {
+          width: 100%;
+          background-color: rgb(151, 56, 210);
+          color: white;
+          padding: 15px;
+          border: none;
+          border-radius: 25px;
+          font-size: 18px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
 
-.custom-select select {
-  display: none; /* Hide original SELECT element */
-}
+      input[type="submit"]:hover {
+          background-color: rgb(151, 56, 210);
+      }
 
-.select-selected {
-  background-color: DodgerBlue;
-  color: #fff;
-  padding: 10px; /* Adjust padding */
-  border-radius: 4px;
-  cursor: pointer;
-}
+      .custom-file-upload {
+          border: 1px solid #ddd;
+          border-radius: 20px;
+          display: inline-block;
+          padding: 12px;
+          cursor: pointer;
+          background-color: #f9f9f9;
+          font-size: 16px;
+          transition: background-color 0.3s ease, border-color 0.3s ease;
+      }
 
-/* Style the arrow inside the select element */
-.select-selected:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
+      .custom-file-upload:hover {
+          background-color: #eef6ff;
+          border-color: rgb(151, 56, 210);
+      }
 
-/* Point the arrow upwards when the select box is open (active) */
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-}
+      .file-input {
+          display: none;
+      }
+      
+      .file-upload-container {
+          position: relative;
+          width: 100%;
+      }
 
-/* Style the items (options), including the selected item */
-.select-items div, .select-selected {
-  padding: 10px; /* Adjust padding */
-  border-radius: 4px;
-}
+      .file-upload-container input[type="file"] + label {
+          width: 100%;
+          text-align: center;
+      }
 
-/* Style items (options) */
-.select-items {
-  position: absolute;
-  background-color: DodgerBlue;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-  display: none;
-  border-radius: 4px;
-}
-
-/* Hide the items when the select box is closed */
-.select-hide {
-  display: none;
-}
-
-/* Show the items when the select box is clicked */
-.select-selected.select-arrow-active ~ .select-items {
-  display: block;
-}
-
-/* Change background color on hover */
-.select-items div:hover, .select-selected:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-
-
-       
-       
-    </style>
+  </style>
 </head>
 <body>
 
-<div>
-    <h2 align="center">Project Presentation</h2>
+  <div class="container">
+    <h2>Project Presentation</h2>
     <form method="POST" action="{{ url_for('project') }}" enctype="multipart/form-data">
-       
-        <h3>Name of the College:</h3>
-        <label for="problem_description"></label>
-        <label for="college_name"></label>
-            <input type="text" id="college_name" name="college_name" placeholder="ENTER THE NAME OF THE COLLEGE" list="college_names">
-            <!-- Datalist for college names -->
-            <datalist id="college_names">
-                 <option value="CENTRAL ELECTROCHEMICAL RESEARCH INSTITUTE (CSIR) KARAIKUDI">
-                <option value="INDIAN INSTITUTE OF HANDLOOM TECHNOLOGY">
-                <option value="PSG INSTITUTE OF TECHNOLOGY AND APPLIED RESEARCH">
-                <option value="ANNAI MIRA COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="VELAMMAL INSTITUTE OF TECHNOLOGY">
-                <option value="KINGSTON ENGINEERING COLLEGE">
-                <option value="MEENAKSHI SUNDARARAJAN ENGINEERING COLLEGE">
-                <option value="SARANATHAN COLLEGE OF ENGINEERING">
-                <option value="LOYOLA - ICAM COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="RAMCO INSTITUTE OF TECHNOLOGY">
-                <option value="GOVERNMENT COLLEGE OF ENGINEERING, DHARMAPURI">
-                <option value="GOVERNMENT COLLEGE OF ENGINEERING - THIRUNELVELI">
-                <option value="P.S.R.R COLLEGE OF ENGINEERING">
-                <option value="PRATHYUSHA ENGINEERING COLLEGE">
-                <option value="ARUNACHALA COLLEGE OF ENGINEERING FOR WOMEN">
-                <option value="ADHIPARASAKTHI COLLEGE OF ENGINEERING">
-                <option value="JEPPIAAR ENGINEERING COLLEGE">
-                <option value="K.C.G. COLLEGE OF TECHNOLOGY">
-                <option value="MISRIMAL NAVAJEE MUNOTH JAIN ENGINEERING COLLEGE">
-                <option value="RAJALAKSHMI INSTITUTE OF TECHNOLOGY">
-                <option value="ADHI COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="THANTHAI PERIYAR GOVT INSTITUTE OF TECHNOLOGY">
-                <option value="NARASU'S SARATHY INSTITUTE OF TECHNOLOGY">
-                <option value="NANDHA COLLEGE OF TECHNOLOGY">
-                <option value="GOVERNMENT COLLEGE OF ENGINEERING, ERODE">
-                <option value="AGNI COLLEGE OF TECHNOLOGY">
-                <option value="BUILDERS ENGINEERING COLLEGE">
-                <option value="SAMS COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="THANGAVELU ENGINEERING COLLEGE">
-                <option value="GOVERNMENT COLLEGE OF ENGINEERING, SRIRANGAM">
-                <option value="INFANT JESUS COLLEGE OF ENGINEERING">
+      <label for="college_name">Name of the College:</label>
+        <input type="text" id="college_name" name="clg_name" placeholder="Enter the name of the college" list="college_names">
+        <datalist id="college_names">
+            <option value="CENTRAL ELECTROCHEMICAL RESEARCH INSTITUTE (CSIR) KARAIKUDI">
+           <option value="INDIAN INSTITUTE OF HANDLOOM TECHNOLOGY">
+           <option value="PSG INSTITUTE OF TECHNOLOGY AND APPLIED RESEARCH">
+           <option value="ANNAI MIRA COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="VELAMMAL INSTITUTE OF TECHNOLOGY">
+           <option value="KINGSTON ENGINEERING COLLEGE">
+           <option value="MEENAKSHI SUNDARARAJAN ENGINEERING COLLEGE">
+           <option value="SARANATHAN COLLEGE OF ENGINEERING">
+           <option value="LOYOLA - ICAM COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="RAMCO INSTITUTE OF TECHNOLOGY">
+           <option value="GOVERNMENT COLLEGE OF ENGINEERING, DHARMAPURI">
+           <option value="GOVERNMENT COLLEGE OF ENGINEERING - THIRUNELVELI">
+           <option value="P.S.R.R COLLEGE OF ENGINEERING">
+           <option value="PRATHYUSHA ENGINEERING COLLEGE">
+           <option value="ARUNACHALA COLLEGE OF ENGINEERING FOR WOMEN">
+           <option value="ADHIPARASAKTHI COLLEGE OF ENGINEERING">
+           <option value="JEPPIAAR ENGINEERING COLLEGE">
+           <option value="K.C.G. COLLEGE OF TECHNOLOGY">
+           <option value="MISRIMAL NAVAJEE MUNOTH JAIN ENGINEERING COLLEGE">
+           <option value="RAJALAKSHMI INSTITUTE OF TECHNOLOGY">
+           <option value="ADHI COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="THANTHAI PERIYAR GOVT INSTITUTE OF TECHNOLOGY">
+           <option value="NARASU'S SARATHY INSTITUTE OF TECHNOLOGY">
+           <option value="NANDHA COLLEGE OF TECHNOLOGY">
+           <option value="GOVERNMENT COLLEGE OF ENGINEERING, ERODE">
+           <option value="AGNI COLLEGE OF TECHNOLOGY">
+           <option value="BUILDERS ENGINEERING COLLEGE">
+           <option value="SAMS COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="THANGAVELU ENGINEERING COLLEGE">
+           <option value="GOVERNMENT COLLEGE OF ENGINEERING, SRIRANGAM">
+           <option value="INFANT JESUS COLLEGE OF ENGINEERING">
 <option value="DHAANISH AHMED COLLEGE OF ENGINEERING">
-                <option value="AAA COLLEGE OF ENGINEERING &amp; TECHNOLOGY">
-                <option value="JANSONS INSTITUTE OF TECHNOLOGY">
-                <option value="VIVEKANANDHA COLLEGE OF TECHNOLOGY FOR WOMEN">
-                <option value="CHETTINAD COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="VAIGAI COLLEGE OF ENGINEERING">
-                <option value="V.S.B. COLLEGE OF ENGINEERING TECHNICAL CAMPUS">
-                <option value="ANJALAI AMMAL MAHALINGAM ENGINEERING COLLEGE">
-                <option value="DR.SIVANTHI ADITANAR COLLEGE OF ENGINEERING">
-                <option value="PRINCE DR.K.VASUDEVAN COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="ADHIPARASAKTHI ENGINEERING COLLEGE">
-                <option value="NADAR SARASWATHI COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="MOHAMED SATHAK ENGINEERING COLLEGE">
-                <option value="P.B. COLLEGE OF ENGINEERING">
-                <option value="VEERAMMAL ENGINEERING COLLEGE">
-                <option value="MAILAM ENGINEERING COLLEGE">
-                <option value="C.ABDUL HAKEEM COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="A V S ENGINEERING COLLEGE">
-                <option value="KGISL INSTITUTE OF TECHNOLOGY">
-                <option value="ARUNAI ENGINEERING COLLEGE">
-                <option value="V V COLLEGE OF ENGINEERING">
-                <option value="GANADIPATHY TULSI'S JAIN ENGINEERING COLLEGE">
-                <option value="PARISUTHAM INSTITUTE OF TECHNOLOGY AND SCIENCE">
-                <option value="SRI BHARATHI ENGINEERING COLLEGE FOR WOMEN">
-                <option value="SRI VIDYA COLLEGE OF ENGINEERING &amp; TECHNOLOGY">
-                <option value="DHIRAJLAL GANDHI COLLEGE OF TECHNOLOGY">
-                <option value="ER.PERUMAL MANIMEKALAI COLLEGE OF ENGINEERING">
-                <option value="KNOWLEDGE INSTITUTE OF TECHNOLOGY">
-                <option value="SRI RAMAKRISHNA COLLEGE OF ENGINEERING">
-                <option value="GOVERNMENT COLLEGE OF ENGINEERING, THANJAVUR">
-                <option value="S.K.R. ENGINEERING COLLEGE">
-                <option value="PODHIGAI COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="JEPPIAAR INSTITUTE OF TECHNOLOGY">
-                <option value="JAI SHRIRAM ENGINEERING COLLEGE">
-                <option value="MEENAKSHI COLLEGE OF ENGINEERING">
-                <option value="GOVERNMENT COLLEGE OF ENGINEERING">
-                <option value="BHARATHIDASAN ENGINEERING COLLEGE">
-                <option value="UNITED INSTITUTE OF TECHNOLOGY">
-                <option value="IDHAYA ENGINEERING COLLEGE FOR WOMEN">
-                <option value="GRT INSTITUTE OF ENGINEERING AND TECHNOLOGY">
-                <option value="C.K. COLLEGE OF ENGINEERING &amp; TECHNOLOGY">
-                <option value="CHENDHURAN COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="KSR INSTITUTE FOR ENGINEERING AND TECHNOLOGY">
-                <option value="SRI VENKATESWARAA COLLEGE OF TECHNOLOGY">
-                <option value="M.P. NACHIMUTHU M. JAGANATHAN ENGINEERING COLLEGE">
-                <option value="SRI SHANMUGHA COLLEGE OF ENGINEERING AND TECHNOLOGY">
-                <option value="BHARATHIYAR INSTITUTE OF ENGINEERING FOR WOMEN">
-                <option value="ARULMURUGAN COLLEGE OF ENGINEERING">
-                <option value="ST.PETER'S COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="AAA COLLEGE OF ENGINEERING &amp; TECHNOLOGY">
+           <option value="JANSONS INSTITUTE OF TECHNOLOGY">
+           <option value="VIVEKANANDHA COLLEGE OF TECHNOLOGY FOR WOMEN">
+           <option value="CHETTINAD COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="VAIGAI COLLEGE OF ENGINEERING">
+           <option value="V.S.B. COLLEGE OF ENGINEERING TECHNICAL CAMPUS">
+           <option value="ANJALAI AMMAL MAHALINGAM ENGINEERING COLLEGE">
+           <option value="DR.SIVANTHI ADITANAR COLLEGE OF ENGINEERING">
+           <option value="PRINCE DR.K.VASUDEVAN COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="ADHIPARASAKTHI ENGINEERING COLLEGE">
+           <option value="NADAR SARASWATHI COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="MOHAMED SATHAK ENGINEERING COLLEGE">
+           <option value="P.B. COLLEGE OF ENGINEERING">
+           <option value="VEERAMMAL ENGINEERING COLLEGE">
+           <option value="MAILAM ENGINEERING COLLEGE">
+           <option value="C.ABDUL HAKEEM COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="A V S ENGINEERING COLLEGE">
+           <option value="KGISL INSTITUTE OF TECHNOLOGY">
+           <option value="ARUNAI ENGINEERING COLLEGE">
+           <option value="V V COLLEGE OF ENGINEERING">
+           <option value="GANADIPATHY TULSI'S JAIN ENGINEERING COLLEGE">
+           <option value="PARISUTHAM INSTITUTE OF TECHNOLOGY AND SCIENCE">
+           <option value="SRI BHARATHI ENGINEERING COLLEGE FOR WOMEN">
+           <option value="SRI VIDYA COLLEGE OF ENGINEERING &amp; TECHNOLOGY">
+           <option value="DHIRAJLAL GANDHI COLLEGE OF TECHNOLOGY">
+           <option value="ER.PERUMAL MANIMEKALAI COLLEGE OF ENGINEERING">
+           <option value="KNOWLEDGE INSTITUTE OF TECHNOLOGY">
+           <option value="SRI RAMAKRISHNA COLLEGE OF ENGINEERING">
+           <option value="GOVERNMENT COLLEGE OF ENGINEERING, THANJAVUR">
+           <option value="S.K.R. ENGINEERING COLLEGE">
+           <option value="PODHIGAI COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="JEPPIAAR INSTITUTE OF TECHNOLOGY">
+           <option value="JAI SHRIRAM ENGINEERING COLLEGE">
+           <option value="MEENAKSHI COLLEGE OF ENGINEERING">
+           <option value="GOVERNMENT COLLEGE OF ENGINEERING">
+           <option value="BHARATHIDASAN ENGINEERING COLLEGE">
+           <option value="UNITED INSTITUTE OF TECHNOLOGY">
+           <option value="IDHAYA ENGINEERING COLLEGE FOR WOMEN">
+           <option value="GRT INSTITUTE OF ENGINEERING AND TECHNOLOGY">
+           <option value="C.K. COLLEGE OF ENGINEERING &amp; TECHNOLOGY">
+           <option value="CHENDHURAN COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="KSR INSTITUTE FOR ENGINEERING AND TECHNOLOGY">
+           <option value="SRI VENKATESWARAA COLLEGE OF TECHNOLOGY">
+           <option value="M.P. NACHIMUTHU M. JAGANATHAN ENGINEERING COLLEGE">
+           <option value="SRI SHANMUGHA COLLEGE OF ENGINEERING AND TECHNOLOGY">
+           <option value="BHARATHIYAR INSTITUTE OF ENGINEERING FOR WOMEN">
+           <option value="ARULMURUGAN COLLEGE OF ENGINEERING">
+           <option value="ST.PETER'S COLLEGE OF ENGINEERING AND TECHNOLOGY">
 <option value="SSM INSTITUTE OF ENGINEERING AND TECHNOLOGY">
-    <option value="SELVAM COLLEGE OF TECHNOLOGY">
-    <option value="M.A.M. COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="HOLY CROSS ENGINEERING COLLEGE">
-    <option value="PONJESLY COLLEGE OF ENGINEERING">
-    <option value="A.V.C COLLEGE OF ENGINEERING">
-    <option value="ROHINI COLLEGE OF ENGINEERING &amp; TECHNOLOGY">
-    <option value="ALPHA COLLEGE OF ENGINEERING">
-    <option value="KARPAGAM INSTITUTE OF TECHNOLOGY">
-    <option value="JAYARAJ ANNAPACKIAM CSI COLLEGE OF ENGINEERING">
-    <option value="EINSTEIN COLLEGE OF ENGINEERING">
-    <option value="APOLLO ENGINEERING COLLEGE">
-    <option value="CSI COLLEGE OF ENGINEERING">
-    <option value="GLOBAL INSTITUTE OF ENGINEERING AND TECHNOLOGY">
-    <option value="MOHAMMED SATHAK A.J.COLLEGE OF ENGINEERING">
-    <option value="NEW PRINCE SHRI BHAVANI COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="PRIYADARSHINI ENGINEERING COLLEGE">
-    <option value="ST.MOTHER THERESA ENGINEERING COLLEGE">
-    <option value="CARE COLLEGE OF ENGINEERING">
-    <option value="MAHENDRA ENGINEERING COLLEGE FOR WOMEN">
-    <option value="TAGORE ENGINEERING COLLEGE">
-    <option value="ARM COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="M R K INSTITUTE OF TECHNOLOGY">
-    <option value="SUDHARSAN ENGINEERING COLLEGE">
-    <option value="AKSHAYA COLLEGE OF ENGINEERING &amp; TECHNOLOGY">
-    <option value="G.K.M. COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="J.J.COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="R.V.S. EDUCATIONAL TRUST'S GROUP OF INSTITUTION">
-    <option value="MOUNT ZION COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="TAMILNADU COLLEGE OF ENGINEERING">
-    <option value="SARDAR RAJA COLLEGE OF ENGINEERING">
-    <option value="SHANMUGANATHAN ENGINEERING COLLEGE">
-    <option value="CHRIST THE KING ENGINEERING COLLEGE">
-    <option value="LOYOLA INSTITUTE OF TECHNOLOGY">
-    <option value="DR.G.U.POPE COLLEGE OF ENGINEERING">
-    <option value="MUTHAYAMMAL COLLEGE OF ENGINEERING">
-    <option value="ST. JOSEPH COLLEGE OF ENGINEERING">
-    <option value="UNNAMALAI INSTITUTE OF TECHNOLOGY">
-    <option value="P.S.V.COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="THENI KAMMAVAR SANGAM COLLEGE OF TECHNOLOGY">
-    <option value="A.R. COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="S.K.P. ENGINEERING COLLEGE">
-    <option value="VETRI VINAYAHA COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="V.P.MUTHAIAH PILLAI MEENAKSHI AMMAL ENGINEERING COLLEGE FOR WOMEN">
-    <option value="KARPAGA VINAYAGA COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="M.I.E.T. ENGINEERING COLLEGE">
-    <option value="JAYA ENGINEERING COLLEGE">
-    <option value="KARAIKUDI INSTITUTE OF TECHNOLOGY AND KARAIKUDI INSTITUTE OF MANAGEMENT">
-    <option value="DHANALAKSHMI SRINIVASAN COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="J K K MUNIRAJAH COLLEGE OF TECHNOLOGY">
-    <option value="A V S COLLEGE OF TECHNOLOGY">
-    <option value="N P R COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="N.S.N. COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="IMAYAM COLLEGE OF ENGINEERING">
-    <option value="PET ENGINEERING COLLEGE">
-    <option value="SRI RANGANATHAR INSTITUTE OF ENGINEERING &amp; TECHNOLOGY">
-    <option value="BETHLAHEM INSTITUTE OF ENGINEERING">
-    <option value="INDIRA INSTITUTE OF ENGINEERING AND TECHNOLOGY">
-    <option value="RAJAS INSTITUTE OF TECHNOLOGY">
-    <option value="NEHRU INSTITUTE OF ENGINEERING AND TECHNOLOGY">
-    <option value="MAM COLLEGE OF ENGINEERING">
-    <option value="GRACE COLLEGE OF ENGINEERING">
-    <option value="S.S.M. COLLEGE OF ENGINEERING">
-    <option value="GOJAN SCHOOL OF BUSINESS AND TECHNOLOGY">
-    <option value="PARK COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="THIRUVALLUVAR COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="INFO INSTITUTE OF ENGINEERING">
-    <option value="MOOKAMBIGAI COLLEGE OF ENGINEERING">
-    <option value="AALIM MUHAMMED SALEGH COLLEGE OF ENGINEERING">
-    <option value="SRI BALAJI CHOCKALINGAM ENGINEERING COLLEGE">
-    <option value="FATIMA MICHAEL COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="VINS CHRISTIAN COLLEGE OF ENGINEERING">
-    <option value="R V S COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="P G P COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="ADITHYA INSTITUTE OF TECHNOLOGY">
-    <option value="ARASU ENGINEERING COLLEGE">
-    <option value="NARAYANAGURU COLLEGE OF ENGINEERING">
-    <option value="KINGS COLLEGE OF ENGINEERING">
-    <option value="THE KAVERY ENGINEERING COLLEGE">
-    <option value="RVS TECHNICAL CAMPUS-COIMBATORE">
-    <option value="IMMANUEL ARASAR J J COLLEGE OF ENGINEERING">
-    <option value="NELLAI COLLEGE OF ENGINEERING">
-    <option value="J C T COLLEGE OF ENGINEERING AND TECHNOLOGY">
-    <option value="R.V.S. COLLEGE OF ENGINEERING">
-    <option value="SRI RAMANUJAR ENGINEERING COLLEGE">
-    <option value="SCAD COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="SELVAM COLLEGE OF TECHNOLOGY">
+<option value="M.A.M. COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="HOLY CROSS ENGINEERING COLLEGE">
+<option value="PONJESLY COLLEGE OF ENGINEERING">
+<option value="A.V.C COLLEGE OF ENGINEERING">
+<option value="ROHINI COLLEGE OF ENGINEERING &amp; TECHNOLOGY">
+<option value="ALPHA COLLEGE OF ENGINEERING">
+<option value="KARPAGAM INSTITUTE OF TECHNOLOGY">
+<option value="JAYARAJ ANNAPACKIAM CSI COLLEGE OF ENGINEERING">
+<option value="EINSTEIN COLLEGE OF ENGINEERING">
+<option value="APOLLO ENGINEERING COLLEGE">
+<option value="CSI COLLEGE OF ENGINEERING">
+<option value="GLOBAL INSTITUTE OF ENGINEERING AND TECHNOLOGY">
+<option value="MOHAMMED SATHAK A.J.COLLEGE OF ENGINEERING">
+<option value="NEW PRINCE SHRI BHAVANI COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="PRIYADARSHINI ENGINEERING COLLEGE">
+<option value="ST.MOTHER THERESA ENGINEERING COLLEGE">
+<option value="CARE COLLEGE OF ENGINEERING">
+<option value="MAHENDRA ENGINEERING COLLEGE FOR WOMEN">
+<option value="TAGORE ENGINEERING COLLEGE">
+<option value="ARM COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="M R K INSTITUTE OF TECHNOLOGY">
+<option value="SUDHARSAN ENGINEERING COLLEGE">
+<option value="AKSHAYA COLLEGE OF ENGINEERING &amp; TECHNOLOGY">
+<option value="G.K.M. COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="J.J.COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="R.V.S. EDUCATIONAL TRUST'S GROUP OF INSTITUTION">
+<option value="MOUNT ZION COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="TAMILNADU COLLEGE OF ENGINEERING">
+<option value="SARDAR RAJA COLLEGE OF ENGINEERING">
+<option value="SHANMUGANATHAN ENGINEERING COLLEGE">
+<option value="CHRIST THE KING ENGINEERING COLLEGE">
+<option value="LOYOLA INSTITUTE OF TECHNOLOGY">
+<option value="DR.G.U.POPE COLLEGE OF ENGINEERING">
+<option value="MUTHAYAMMAL COLLEGE OF ENGINEERING">
+<option value="ST. JOSEPH COLLEGE OF ENGINEERING">
+<option value="UNNAMALAI INSTITUTE OF TECHNOLOGY">
+<option value="P.S.V.COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="THENI KAMMAVAR SANGAM COLLEGE OF TECHNOLOGY">
+<option value="A.R. COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="S.K.P. ENGINEERING COLLEGE">
+<option value="VETRI VINAYAHA COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="V.P.MUTHAIAH PILLAI MEENAKSHI AMMAL ENGINEERING COLLEGE FOR WOMEN">
+<option value="KARPAGA VINAYAGA COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="M.I.E.T. ENGINEERING COLLEGE">
+<option value="JAYA ENGINEERING COLLEGE">
+<option value="KARAIKUDI INSTITUTE OF TECHNOLOGY AND KARAIKUDI INSTITUTE OF MANAGEMENT">
+<option value="DHANALAKSHMI SRINIVASAN COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="J K K MUNIRAJAH COLLEGE OF TECHNOLOGY">
+<option value="A V S COLLEGE OF TECHNOLOGY">
+<option value="N P R COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="N.S.N. COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="IMAYAM COLLEGE OF ENGINEERING">
+<option value="PET ENGINEERING COLLEGE">
+<option value="SRI RANGANATHAR INSTITUTE OF ENGINEERING &amp; TECHNOLOGY">
+<option value="BETHLAHEM INSTITUTE OF ENGINEERING">
+<option value="INDIRA INSTITUTE OF ENGINEERING AND TECHNOLOGY">
+<option value="RAJAS INSTITUTE OF TECHNOLOGY">
+<option value="NEHRU INSTITUTE OF ENGINEERING AND TECHNOLOGY">
+<option value="MAM COLLEGE OF ENGINEERING">
+<option value="GRACE COLLEGE OF ENGINEERING">
+<option value="S.S.M. COLLEGE OF ENGINEERING">
+<option value="GOJAN SCHOOL OF BUSINESS AND TECHNOLOGY">
+<option value="PARK COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="THIRUVALLUVAR COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="INFO INSTITUTE OF ENGINEERING">
+<option value="MOOKAMBIGAI COLLEGE OF ENGINEERING">
+<option value="AALIM MUHAMMED SALEGH COLLEGE OF ENGINEERING">
+<option value="SRI BALAJI CHOCKALINGAM ENGINEERING COLLEGE">
+<option value="FATIMA MICHAEL COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="VINS CHRISTIAN COLLEGE OF ENGINEERING">
+<option value="R V S COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="P G P COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="ADITHYA INSTITUTE OF TECHNOLOGY">
+<option value="ARASU ENGINEERING COLLEGE">
+<option value="NARAYANAGURU COLLEGE OF ENGINEERING">
+<option value="KINGS COLLEGE OF ENGINEERING">
+<option value="THE KAVERY ENGINEERING COLLEGE">
+<option value="RVS TECHNICAL CAMPUS-COIMBATORE">
+<option value="IMMANUEL ARASAR J J COLLEGE OF ENGINEERING">
+<option value="NELLAI COLLEGE OF ENGINEERING">
+<option value="J C T COLLEGE OF ENGINEERING AND TECHNOLOGY">
+<option value="R.V.S. COLLEGE OF ENGINEERING">
+<option value="SRI RAMANUJAR ENGINEERING COLLEGE">
+<option value="SCAD COLLEGE OF ENGINEERING AND TECHNOLOGY">
 <option value="KONGU ENGINEERING COLLEGE">
 
-            </datalist>
-                   <h3>Name of the Event WITH DATE:</h3>
-        <label for="problem_description"></label>
-        <input type="text" id="problem_description" name="event" placeholder="EVENT NAME ">
-<label for="problem_description"></label>
-        <input type="date" id="problem_description" name="date" placeholder="EVENT DATE ">
+       </datalist>
+       <label for="event">Name of the Event:</label>
+       <input type="text" id="event" name="event" placeholder="Enter the event name">
 
-<h3>Location</h3>
-        <label class="container">Inside KEC
-        <input type="radio" checked="checked" name="radio" value="Inside KEC">
-        <span class="checkmark"></span>
-        </label><br>
-        <label class="container">Outside KEC
-        <input type="radio" name="radio" value="Outside KEC">
-        <span class="checkmark"></span>
-        </label><br>
-             
-        <h3>Prize secured :</h3>
-        <label class="container">1st Prize
-        <input type="radio"  name="radio1" value="1st Prize">
-        <span class="checkmark"></span>
-        </label><br>
-        <label class="container">2nd Prize
-        <input type="radio" name="radio1" value="2nd Prize">
-        <span class="checkmark"></span>
-        </label><br>
-        <label class="container">Participation
-        <input type="radio" name="radio1" value="Participation">
-        <span class="checkmark"></span>
-        </label><br>
-      <label class="container">CASH PRIZE
-        <input type="radio" name="radio1" value="CASH PRIZE">
-        <span class="checkmark"></span>
-        </label><br>
+       <label for="date">Date of Event:</label>
+       <div class="date-upload-container">
+       <input type="date" id="date" name="date">
+       </div>
+       <label for="location">Location:</label>
+       <div class="radio-group">
+           <input type="radio" id="inside" name="location" value="Inside KEC">
+           <label for="inside">Inside KEC</label>
 
-    <P>Price Money :
-        <input type="NUMBER" id="price" name="price"></P>
- 
-        <BR>
-        <label for="myfile">ADD FILE:</label>
-        <input type="file" id="myfile" name="myfile"><br><br>
-     
-        <input type="submit">
+           <input type="radio" id="outside" name="location" value="Outside KEC">
+           <label for="outside">Outside KEC</label>
+       </div>
+
+       <label for="prize">Prize Secured:</label>
+       <div class="radio-group">
+           <input type="radio" id="first_prize" name="prize" value="1st Prize">
+           <label for="first_prize">1st Prize</label>
+
+           <input type="radio" id="second_prize" name="prize" value="2nd Prize">
+           <label for="second_prize">2nd Prize</label>
+
+           <input type="radio" id="participation" name="prize" value="Participation">
+           <label for="participation">Participation</label>
+
+           <input type="radio" id="cash_prize" name="prize" value="Cash Prize">
+           <label for="cash_prize">Cash Prize</label>
+       </div>
+
+       <label for="price">Prize Money (if applicable):</label>
+       <input type="text" id="price" name="price" placeholder="Enter prize money (if any)">
+
+       <label for="proof">Upload Proof:</label>
+       <div class="file-upload-container">
+           <input type="file" id="proof" name="proof" class="file-input">
+           <label for="proof" class="custom-file-upload">Choose File</label>
+       </div>
+
+       <input type="submit" value="Submit">
   </form>
 
  

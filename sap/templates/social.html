@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOCIAL ACTIVITIES</title>
+    <title>Social Activities</title>
     <style>
         body {
             background-image: url("https://img.freepik.com/premium-vector/seamless-pattern-with-different-school-objects_165488-4326.jpg?w=996");
@@ -11,8 +11,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             font-family: Arial, sans-serif;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,138 +19,122 @@
             padding: 10px;
         }
 
-        div {          
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .container {
             max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: rgb(151, 56, 210);
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="file"],
+        input[type="text"],
+        input[type="submit"] {
             width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        input[type="file"]:focus,
+        input[type="text"]:focus {
+            background-color: #eef6ff;
+            border-color: rgb(151, 56, 210);
+            outline: none;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .radio-group label {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
             text-align: left;
         }
 
-        .container {
-            display: block;
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 1px;
-            cursor: pointer;
-            font-size: 20px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }  
-
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
-            border-radius: 4px;
-        }
-
-        .container:hover input ~ .checkmark {
-            background-color: #ccc;
-        }
-
-        .container input:checked ~ .checkmark {
-            background-color: rgb(151, 56, 210);
-        }  
-
-        .checkmark:after {
-            content: "";
-            position: absolute;
+        .radio-group input[type="radio"] {
             display: none;
         }
-        #liveFeedSettingSideBar {
-    width: 1px; /* Set the desired width */
-    height: 1px; /* Set the desired height */
-    background-color: transparent;
-}
-        .container input:checked ~ .checkmark:after {
-            display: block;
-        }
 
-        .container .checkmark:after {
-            top: 7px;
-            left: 9px;
-            width: 6px;
-            height: 12px;
-            border: solid #fff;
-            border-width: 0 3px 3px 0;
-            transform: rotate(45deg);
-        }
- 
-        input[type=text], select {
-            width: 100%;
-            padding: 20px 120px 30px 5px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        input[type=SUBMIT] {
-            width: 100%;
-            background-color: #61579a;      
+        .radio-group input[type="radio"]:checked + label {
+            background-color: rgb(151, 56, 210);
             color: white;
-            padding: 12px 10px;
-            margin: 8px 0;
+            border-color: rgb(151, 56, 210);
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: rgb(151, 56, 210);
+            color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 25px;
+            font-size: 18px;
             cursor: pointer;
-            border-radius: 50px;
+            transition: background-color 0.3s ease;
         }
 
         input[type=submit]:hover {
-            background-color: #ab84ed;
+            background-color: rgb(120, 40, 170);
+        }
+
+        .note {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #ec0e0e;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-<div>
-    <h2 align="center">Social Activities</h2>
+<div class="container">
+    <h2>Social Activities</h2>
     <form method="POST" action="{{ url_for('social') }}" enctype="multipart/form-data">
         <h3>Community Services:</h3>
-        <label class="container">Blood Donation,Social March,Swach Bharat Activities
-            <input type="checkbox" name="checkbox1" value="blood donation">
-            <span class="checkmark"></span>
-        </label><br>
-        <input type="number" id="blood donation" name="blood_donation"><br><br>
-        <label for="myfile">ADD FILE:</label>
-        <input type="file" id="myfile" name="myfile1"><br><br>
-       
-        <label class="container">NSS/NCC Camp(1 to 2 weeks)
-        <input type="checkbox" name="checkbox2" value="NSS/NCC 1camp">
-            <span class="checkmark"></span>
-        </label><br>
-        <input type="number" id="NSS/NCC 1Camp" name="NSS/NCC_1Camp"><br><br>
-        <label for="myfile">ADD FILE:</label>
-        <input type="file" id="myfile" name="myfile2"><br><br>
-<label class="container">NSS/NCC Camp(more than 2 weeks)
-        <input type="checkbox" name="checkbox2" value="NSS/NCC 2camp">
-            <span class="checkmark"></span>
-        </label><br>
-        <input type="number" id="NSS/NCC 2Camp" name="NSS/NCC_2Camp"><br><br>
-        <label for="myfile">ADD FILE:</label>
-        <input type="file" id="myfile" name="myfile3"><br><br>
+        
+        <div class="radio-group">
+            <input type="radio" name="activity" value="Blood Donation, Social March, Swach Bharat Activities" id="community_service_1">
+            <label for="community_service_1">Blood Donation, Social March, Swach Bharat Activities</label>
 
+            <input type="radio" name="activity" value="NSS/NCC Camp (1 to 2 weeks)" id="nss_ncc_1">
+            <label for="nss_ncc_1">NSS/NCC Camp (1 to 2 weeks)</label>
 
-         <input type="submit">
+            <input type="radio" name="activity" value="NSS/NCC Camp (more than 2 weeks)" id="nss_ncc_2">
+            <label for="nss_ncc_2">NSS/NCC Camp (more than 2 weeks)</label>
+        </div>
+
+        <div class="note">Note: If you have participated in more than one activity, please fill out the form again.</div>
+
+        <label for="proof">Upload Proof:</label>
+        <input type="file" id="proof" name="proof"><br><br>
+
+        <input type="submit" value="Submit">
     </form>
 </div>
-
 </body>
 </html>

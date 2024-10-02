@@ -454,8 +454,8 @@ def paper():
             name_clg = flask.request.form.get('clg_name')
             event = flask.request.form.get('event')
             date = flask.request.form.get('date')
-            loc = flask.request.form.get('radio')
-            prize = flask.request.form.get('radio1')
+            loc = flask.request.form.get('location')
+            prize = flask.request.form.get('prize')
             price = flask.request.form.get('price')
             proof = flask.request.files['proof']
             temp =0
@@ -921,10 +921,10 @@ def techno():
             name_clg = flask.request.form.get('clg_name')
             event = flask.request.form.get('event')
             date = flask.request.form.get('date')
-            loc = flask.request.form.get('radio')
-            prize = flask.request.form.get('radio1')
+            loc = flask.request.form.get('location')
+            prize = flask.request.form.get('prize')
             price = flask.request.form.get('price')
-            proof = flask.request.files['myfile']
+            proof = flask.request.files['proof']
             temp=0
 
 
@@ -967,10 +967,10 @@ def project():
             name_clg = flask.request.form.get('clg_name')
             event = flask.request.form.get('event')
             date = flask.request.form.get('date')
-            loc = flask.request.form.get('radio')
-            prize = flask.request.form.get('radio1')
+            loc = flask.request.form.get('location')
+            prize = flask.request.form.get('prize')
             price = flask.request.form.get('price')
-            proof = flask.request.files['myfile']
+            proof = flask.request.files['proof']
             temp=0
 
 

@@ -76,6 +76,13 @@
         button:hover {
             background-color: #554c86;
         }
+        .but {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
     </style>
 </head>
 <body>
@@ -90,6 +97,7 @@
                 <strong>DEPARTMENT:</strong> {{ user['dept'] }} <br>
             </div>
         </div>
+        <div class="but"> 
         <a href="{{ url_for('paper') }}"><button type="button"><i class="fa fa-file-text-o"></i> Paper Presentation</button></a>
         <a href="{{ url_for('project') }}"><button type="button"><i class="fa fa-folder-open-o"></i> Project Presentation</button></a>
         <a href="{{ url_for('techno') }}"><button type="button"><i class="fa fa-cogs"></i> Techno Managerial Events</button></a>
@@ -102,6 +110,7 @@
         <a href="{{ url_for('ipt') }}"><button type="button"><i class="fa fa-briefcase"></i> Placement and Internship</button></a>
         <a href="{{ url_for('enterp') }}"><button type="button"><i class="fa fa-lightbulb-o"></i> Entrepreneurship</button></a>
         <a href="{{ url_for('social') }}"><button type="button"><i class="fa fa-heart"></i> Social Activities</button></a>
+        </div>
     </form>
 </body>
 </html>

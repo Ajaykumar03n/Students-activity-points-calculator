@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLACEMENT AND INTERNSHIP</title>
+    <title>Placement and Internship</title>
     <style>
         body {
             background-image: url("https://img.freepik.com/premium-vector/seamless-pattern-with-different-school-objects_165488-4326.jpg?w=996");
@@ -11,8 +11,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             font-family: Arial, sans-serif;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,139 +19,142 @@
             padding: 10px;
         }
 
-        div {          
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            width: 100%;
-            text-align: left;
-        }
-
         .container {
-            display: block;
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 1px;
-            cursor: pointer;
-            font-size: 20px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin: 20px;
         }
 
-        .container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }  
-
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
-            border-radius: 4px;
+        h2, h3 {
+            text-align: center;
+            color: rgb(151, 56, 210);
+            margin-bottom: 20px;
         }
 
-        .container:hover input ~ .checkmark {
-            background-color: #ccc;
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
         }
 
-        .container input:checked ~ .checkmark {
-            background-color: rgb(151, 56, 210);
-        }  
-
-        .checkmark:after {
-            content: "";
-            position: absolute;
+        .radio-group input[type="radio"] {
             display: none;
         }
 
-        .container input:checked ~ .checkmark:after {
-            display: block;
-        }
-
-        .container .checkmark:after {
-            top: 7px;
-            left: 9px;
-            width: 6px;
-            height: 12px;
-            border: solid #fff;
-            border-width: 0 3px 3px 0;
-            transform: rotate(45deg);
-        }
- 
-        input[type=text], select {
-            width: 100%;
-            padding: 20px 120px 30px 5px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        input[type=SUBMIT] {
-            width: 100%;
-            background-color: #61579a;      
-            color: white;
-            padding: 12px 10px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
+        .radio-group label {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 15px;
             cursor: pointer;
-            border-radius: 50px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+            text-align: left;
         }
-        #liveFeedSettingSideBar {
-    width: 1px; /* Set the desired width */
-    height: 1px; /* Set the desired height */
-    background-color: transparent;
-}
+
+        .radio-group input[type="radio"]:checked + label {
+            background-color: rgb(151, 56, 210);
+            color: white;
+            border-color: rgb(151, 56, 210);
+        }
+
+        .note {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #ec0e0e;
+            text-align: center;
+        }
+
+        input[type="file"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        input[type="file"]:focus,
+        input[type="submit"]:hover {
+            background-color: #eef6ff;
+            border-color: rgb(151, 56, 210);
+        }
+
+        input[type=submit] {
+            background-color: rgb(151, 56, 210);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
         input[type=submit]:hover {
-            background-color: #ab84ed;
+            background-color: rgb(120, 40, 170);
+        }
+        .custom-file-upload {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            display: inline-block;
+            padding: 12px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #eef6ff;
+            border-color: rgb(151, 56, 210);
+        }
+        .file-input {
+            display: none;
+        }
+        
+        .file-upload-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .file-upload-container input[type="file"] + label {
+            width: 100%;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-<div>
-    <h2 align="center">PLACEMENT AND INTERNSHIP</h2>
+<div class="container">
+    <h2>Placement and Internship</h2>
     <form method="POST" action="{{ url_for('ipt') }}" enctype="multipart/form-data">
-        <h3>Placements and Internships:</h3>
-        <label class="container">Written Test cleared
-            <input type="checkbox" name="checkbox1" value="written test cleared">
-            <span class="checkmark"></span>
-        </label><br>
-        <input type="number" id="written test cleared" name="written test cleared"><br><br>
-        <label for="myfile">ADD FILE:</label>
-        <input type="file" id="myfile" name="myfile1"><br><br>
-       
-        <label class="container">Placed
-        <input type="radio" name="radio1" value="placed">
-            <span class="checkmark"></span>
-        </label><br>
-   
-       
-<label class="container">Placed with Internship
-        <input type="radio" name="radio1" value="placed with internship">
-            <span class="checkmark"></span>
-        </label><br>
+        <h3>Select Placement Status:</h3>
+        <div class="radio-group">
+            <input type="radio" name="status" value="written test cleared" id="written_test_cleared">
+            <label for="written_test_cleared">Written Test Cleared</label>
 
-<label class="container">Internship without Placement
-        <input type="radio" name="radio1" value="internship without placement">
-            <span class="checkmark"></span>
-        </label><br>
-       
-     
+            <input type="radio" name="status" value="placed" id="placed">
+            <label for="placed">Placed</label>
 
-         <input type="submit">
+            <input type="radio" name="status" value="placed with internship" id="placed_with_internship">
+            <label for="placed_with_internship">Placed with Internship</label>
+
+            <input type="radio" name="status" value="internship without placement" id="internship_without_placement">
+            <label for="internship_without_placement">Internship without Placement</label>
+        </div>
+
+        <div class="note">Note: If you have more than one placement or internship, please fill out the form again.</div>
+
+        <label for="proof">Upload Proof:<br></label>
+        <div class="file-upload-container">
+            <input type="file" id="proof" name="proof" class="file-input">
+            <label for="proof" class="custom-file-upload">Choose File</label>
+        </div><br>
+
+        <input type="submit" value="Submit">
     </form>
 </div>
 
